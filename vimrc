@@ -9,7 +9,7 @@ set hlsearch
 set smartindent
 set expandtab
 set gdefault
-set mouse=a
+"set mouse=a "I'm a crazy person
 set hidden
 set wildmode=longest,list
 set wildmenu
@@ -51,7 +51,7 @@ Bundle 'tpope/vim-capslock'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'morhetz/gruvbox'
 Bundle 'burnettk/vim-angular'
-"Bundle 'matthewsimo/angular-vim-snippets'
+Bundle 'matthewsimo/angular-vim-snippets'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'wincent/Command-T'
 Bundle 'bling/vim-airline'
@@ -59,8 +59,24 @@ Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'dbarsam/vim-rainbow-parentheses'
 
 call vundle#end()
+
+let g:rainbow_activate = 1
+let b:rainbow_matchpairs = [['(', ')'], ['\[', '\]'], ['{', '}']]
+
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_start_level=3
+let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
+
+" disable preview pane for tern
+set completeopt-=preview
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks=['indent']
@@ -76,21 +92,32 @@ let g:syntastic_javascript_jshint_args="maxcomplexity=10 eqeqeq=false validthis=
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
+let g:syntastic_html_tidy_exec="/usr/local/bin/tidy"
+" disable almost everything for angular
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute ", "trimming empty <", "unescaped &", "lacks \"action", "is not recognized!", "discarding unexpected"]
+
 let g:angular_filename_convention = 'camelcased'
+
 let g:CommandTFileScanner='find'
+
+let g:UltiSnipsExpandTrigger='<C-f>'
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
 let g:EasyMotion_startofline=0
 map <C-h> <Plug>(easymotion-b)
 map <C-l> <Plug>(easymotion-w)
-map <C-k> <Plug>(easymotion-b)
-map <C-j> <Plug>(easymotion-w)
 
 map <C-n> :NERDTreeToggle<CR>
 
 imap <C-l> <Plug>CapsLockToggle
 
 set background=dark
-colorscheme solarized 
+"colorscheme molokai 
+"colorscheme flattr
+"colorscheme desertEx
+"colorscheme kolor
+colorscheme obsidian
 
 au BufNewFile,BufRead *.xml.example set filetype=xml
 au BufNewFile,BufRead *.tmpl set filetype=html
