@@ -20,6 +20,7 @@ set foldmethod=indent
 set foldlevelstart=20
 set scrolloff=15
 set directory=~/swpfiles
+set term=screen-256color
 
 " stupid capital letters
 cnoreabbrev W w
@@ -29,7 +30,6 @@ cnoreabbrev Q q
 cnoreabbrev Qa qa
 cnoreabbrev Wqa wqa
 
-
 " Here come the plugins
 
 filetype off " required!
@@ -38,6 +38,8 @@ call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
 Bundle 'pangloss/vim-javascript'
+Bundle 'othree/javascript-libraries-syntax.vim'
+"Bundle 'jason0x43/vim-js-indent'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -47,12 +49,12 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-capslock'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'morhetz/gruvbox'
 Bundle 'burnettk/vim-angular'
 Bundle 'matthewsimo/angular-vim-snippets'
-Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'wincent/Command-T'
 Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
@@ -124,5 +126,7 @@ au BufNewFile,BufRead *.tmpl set filetype=html
 au BufNewFile,BufRead *.cshtml set filetype=html
 au BufRead /tmp/sql* set ft=sql
 
-vmap a S(
-vmap s S"
+:autocmd InsertEnter,InsertLeave * set cul! "highlight edit line
+
+:nnoremap <F12> :exe ':silent !chromium-browser % &'<CR>
+:nnoremap <F9> :redraw!<CR>
