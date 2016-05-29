@@ -2,25 +2,24 @@ set nocompatible
 set number
 set smartcase
 set ignorecase
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set hlsearch
 set smartindent
 set expandtab
 set gdefault
-"set mouse=a "I'm a crazy person
+set mouse=a
 set hidden
 set wildmode=longest,list
 set wildmenu
-set title
 set incsearch
 set laststatus=2 "show airline bar all the time
 set foldmethod=indent
 set foldlevelstart=20
 set scrolloff=15
-set directory=~/swpfiles
-set term=screen-256color
+set directory=~/.swpfiles
+set backspace=start
 
 " stupid capital letters
 cnoreabbrev W w
@@ -30,6 +29,7 @@ cnoreabbrev Q q
 cnoreabbrev Qa qa
 cnoreabbrev Wqa wqa
 
+
 " Here come the plugins
 
 filetype off " required!
@@ -38,8 +38,6 @@ call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
 Bundle 'pangloss/vim-javascript'
-Bundle 'othree/javascript-libraries-syntax.vim'
-"Bundle 'jason0x43/vim-js-indent'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -49,36 +47,20 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-capslock'
+"Bundle 'tpope/vim-capslock'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'morhetz/gruvbox'
 Bundle 'burnettk/vim-angular'
-Bundle 'matthewsimo/angular-vim-snippets'
+"Bundle 'matthewsimo/angular-vim-snippets'
+Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'wincent/Command-T'
 Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'marijnh/tern_for_vim'
-Bundle 'dbarsam/vim-rainbow-parentheses'
 
 call vundle#end()
-
-let g:rainbow_activate = 1
-let b:rainbow_matchpairs = [['(', ')'], ['\[', '\]'], ['{', '}']]
-
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-let g:indent_guides_start_level=3
-let g:indent_guides_guide_size=1
-let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
-
-" disable preview pane for tern
-set completeopt-=preview
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks=['indent']
@@ -94,39 +76,43 @@ let g:syntastic_javascript_jshint_args="maxcomplexity=10 eqeqeq=false validthis=
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
-let g:syntastic_html_tidy_exec="/usr/local/bin/tidy"
-" disable almost everything for angular
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute ", "trimming empty <", "unescaped &", "lacks \"action", "is not recognized!", "discarding unexpected"]
-
 let g:angular_filename_convention = 'camelcased'
-
 let g:CommandTFileScanner='find'
-
-let g:UltiSnipsExpandTrigger='<C-f>'
-let g:UltiSnipsJumpForwardTrigger='<C-j>'
-let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 
 let g:EasyMotion_startofline=0
 map <C-h> <Plug>(easymotion-b)
 map <C-l> <Plug>(easymotion-w)
+map <C-k> <Plug>(easymotion-b)
+map <C-j> <Plug>(easymotion-w)
+
+let g:UltiSnipsExpandTrigger='<c-f>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 map <C-n> :NERDTreeToggle<CR>
-
-imap <C-l> <Plug>CapsLockToggle
+map <C-p> :set ft=html<CR>
+map <C-[> :set ft=php<CR>
 
 set background=dark
-"colorscheme molokai 
-"colorscheme flattr
-"colorscheme desertEx
-"colorscheme kolor
-colorscheme obsidian
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+let g:solarized_termcolors=256
+colorscheme kolor 
+syntax on
+
 
 au BufNewFile,BufRead *.xml.example set filetype=xml
 au BufNewFile,BufRead *.tmpl set filetype=html
 au BufNewFile,BufRead *.cshtml set filetype=html
 au BufRead /tmp/sql* set ft=sql
+au BufNewFile,BufRead /etc/apache2/users/* set ft=apache
+au BufNewFile,BufRead */templates/*.html set ft=htmldjango
 
-:autocmd InsertEnter,InsertLeave * set cul! "highlight edit line
+vmap a S(
+vmap s S"
 
-:nnoremap <F12> :exe ':silent !chromium-browser % &'<CR>
-:nnoremap <F9> :redraw!<CR>
+
+"Don't unselect text when shifting
+vnoremap < <gv
+vnoremap > >gv
+
