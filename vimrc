@@ -19,7 +19,7 @@ set foldmethod=indent
 set foldlevelstart=20
 set scrolloff=15
 set directory=~/.swpfiles
-set backspace=start
+set backspace=start,indent,eol
 
 " stupid capital letters
 cnoreabbrev W w
@@ -90,8 +90,7 @@ let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 map <C-n> :NERDTreeToggle<CR>
-map <C-p> :set ft=html<CR>
-map <C-[> :set ft=php<CR>
+let NERDTreeIgnore = ['\.pyc$']
 
 set background=dark
 let g:solarized_visibility="high"
