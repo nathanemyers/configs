@@ -9,7 +9,7 @@ set hlsearch
 set smartindent
 set expandtab
 set gdefault
-set mouse=a
+"set mouse=a
 set hidden
 set wildmode=longest,list
 set wildmenu
