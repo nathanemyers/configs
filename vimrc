@@ -59,6 +59,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'mxw/vim-jsx'
+Bundle "justinj/vim-react-snippets"
 
 call vundle#end()
 
@@ -71,8 +73,8 @@ let g:neocomplcache_enable_auto_select=1
 let g:neocomplcache_disable_auto_complete=1
 
 let g:syntastic_csslint_options = "--ignore=ids,important,adjoining-classes"
-let g:syntastic_javascript_checkers=['jshint']
-let g:syntastic_javascript_jshint_args="maxcomplexity=10 eqeqeq=false validthis=false"
+let g:syntastic_javascript_checkers=['eslint']
+"let g:syntastic_javascript_jshint_esversion = 6
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
@@ -114,4 +116,8 @@ vmap s S"
 "Don't unselect text when shifting
 vnoremap < <gv
 vnoremap > >gv
+
+nmap <C-p> :copen<CR>
+nmap <C-[> :cprev<CR>
+nmap <C-]> :cnext<CR>
 
