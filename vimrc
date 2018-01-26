@@ -20,7 +20,7 @@ set foldlevelstart=20
 set scrolloff=15
 set directory=~/.swpfiles
 set backspace=start,indent,eol
-set wildignore=node_modules/*,dist/*
+set wildignore=*/node_modules,*/dist/*,*/bin
 set autoread "for those times I edit something in IDEA
 
 " stupid capital letters
@@ -62,11 +62,19 @@ Bundle 'justinj/vim-react-snippets'
 Bundle 'digitaltoad/vim-pug'
 Bundle 'chrisbra/Colorizer'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'gabesoft/vim-ags'
+Bundle 'mtscout6/syntastic-local-eslint.vim'
+
 " Ruby stuff
 Bundle 'tpope/vim-endwise'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'thoughtbot/vim-rspec'
+
+" typescript
+Bundle 'leafgarland/typescript-vim'
+"Bundle 'Quramy/tsuquyomi'
 
 " vim-rspec
 map <Leader>r :call RunCurrentSpecFile()<CR>
@@ -78,6 +86,8 @@ call vundle#end()
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks=['indent']
+let g:airline_section_y='' " get a little more airline space
+let g:airline#extensions#branch#displayed_head_limit = 16 
 
 filetype plugin indent on   " required!
 let g:neocomplcache_enable_at_startup=1
@@ -118,6 +128,7 @@ syntax on
 let g:colorizer_auto_color = 1
 let g:colorizer_auto_filetype = 'css,scss,html'
 
+let g:vim_json_syntax_conceal = 0
 
 au BufNewFile,BufRead *.xml.example set filetype=xml
 au BufNewFile,BufRead *.tmpl set filetype=html
@@ -128,6 +139,8 @@ au BufNewFile,BufRead */templates/*.html set ft=htmldjango
 
 au BufNewFile,BufRead */_layouts/*.html set ft=liquid
 au BufNewFile,BufRead */_includes/*.html set ft=liquid
+
+au BufNewFile,BufRead *.hbs set ft=html
 
 vmap a S(
 vmap s S"
@@ -140,6 +153,6 @@ vnoremap > >gv
 noremap Y y$
 
 nmap <C-p> :copen<CR>
-nmap <C-[> :cprev<CR>
+"nmap <C-[> :cprev<CR>
 nmap <C-]> :cnext<CR>
 
