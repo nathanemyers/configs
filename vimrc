@@ -31,7 +31,6 @@ cnoreabbrev Q q
 cnoreabbrev Qa qa
 cnoreabbrev Wqa wqa
 
-
 " Here come the plugins
 
 filetype off " required!
@@ -39,6 +38,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
+
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
@@ -49,32 +49,35 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'burnettk/vim-angular'
-Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'wincent/Command-T'
 Bundle 'bling/vim-airline'
 Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mxw/vim-jsx'
-Bundle 'justinj/vim-react-snippets'
-Bundle 'digitaltoad/vim-pug'
+"Bundle 'mxw/vim-jsx'
 Bundle 'chrisbra/Colorizer'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'mustache/vim-mustache-handlebars'
+"Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'gabesoft/vim-ags'
 Bundle 'mtscout6/syntastic-local-eslint.vim'
+
+"Bundle 'ryanoasis/vim-devicons'
+"Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+Bundle 'honza/vim-snippets'
+Bundle 'justinj/vim-react-snippets'
+Bundle 'joaohkfaria/vim-jest-snippets'
+Bundle 'jparise/vim-graphql'
+"Bundle 'kburdett/vim-nuuid'
+
+"Bundle 'easymotion/vim-easymotion'
 
 " Ruby stuff
 Bundle 'tpope/vim-endwise'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'thoughtbot/vim-rspec'
+"Bundle 'tpope/vim-rails'
+"Bundle 'thoughtbot/vim-rspec'
 
 " typescript
 Bundle 'leafgarland/typescript-vim'
-"Bundle 'Quramy/tsuquyomi'
+Bundle 'Quramy/tsuquyomi'
 
 " vim-rspec
 map <Leader>r :call RunCurrentSpecFile()<CR>
@@ -116,39 +119,51 @@ let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'node_modules']
+
+let g:tsuquyomi_disable_quickfix=1
+"let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+let g:tsuquyomi_disable_default_mappings = 1
+
 
 set background=dark
 let g:solarized_visibility="high"
-let g:solarized_contrast="high"
+let g:solarized_contrast="low"
 let g:solarized_termcolors=256
-colorscheme kolor 
+colorscheme gruvbox
+
 syntax on
+nmap R :colorscheme random<CR>:echo g:colors_name<CR>
 
 let g:colorizer_auto_color = 1
 let g:colorizer_auto_filetype = 'css,scss,html'
 
 let g:vim_json_syntax_conceal = 0
 
-au BufNewFile,BufRead *.xml.example set filetype=xml
-au BufNewFile,BufRead *.tmpl set filetype=html
-au BufNewFile,BufRead *.cshtml set filetype=html
 au BufRead /tmp/sql* set ft=sql
-au BufNewFile,BufRead /etc/apache2/users/* set ft=apache
-au BufNewFile,BufRead */templates/*.html set ft=htmldjango
 
 au BufNewFile,BufRead */_layouts/*.html set ft=liquid
 au BufNewFile,BufRead */_includes/*.html set ft=liquid
 
-au BufNewFile,BufRead *.hbs set ft=html
-
 vmap a S(
 vmap s S"
 
+vnoremap Y "*y
+
+" Vim dev-icons needs UTF-8
+set encoding=UTF-8
+
+" Performance fix for icons in the nerd tree
+"augroup nerdtreedisablecursorline
+	"autocmd!
+	"autocmd FileType nerdtree setlocal nocursorline
+"augroup end
 
 "Don't unselect text when shifting
 vnoremap < <gv
 vnoremap > >gv
+
+vmap <C-c> "+yi
 
 noremap Y y$
 
