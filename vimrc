@@ -9,7 +9,6 @@ set hlsearch
 set smartindent
 set expandtab
 set gdefault
-"set mouse=a
 set hidden
 set wildmode=longest,list
 set wildmenu
@@ -49,41 +48,34 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle 'wincent/Command-T'
+Bundle 'junegunn/fzf.vim'
 Bundle 'bling/vim-airline'
-Bundle 'SirVer/ultisnips'
-"Bundle 'mxw/vim-jsx'
+Bundle 'mxw/vim-jsx'
 Bundle 'chrisbra/Colorizer'
-"Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'gabesoft/vim-ags'
 Bundle 'mtscout6/syntastic-local-eslint.vim'
+"Bundle 'jparise/vim-graphql'
+"Bundle 'kburdett/vim-nuuid'
 
 "Bundle 'ryanoasis/vim-devicons'
 "Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'justinj/vim-react-snippets'
 Bundle 'joaohkfaria/vim-jest-snippets'
-Bundle 'jparise/vim-graphql'
-"Bundle 'kburdett/vim-nuuid'
 
 "Bundle 'easymotion/vim-easymotion'
 
 " Ruby stuff
-Bundle 'tpope/vim-endwise'
-Bundle 'vim-ruby/vim-ruby'
+"Bundle 'tpope/vim-endwise'
+"Bundle 'vim-ruby/vim-ruby'
 "Bundle 'tpope/vim-rails'
 "Bundle 'thoughtbot/vim-rspec'
 
 " typescript
-Bundle 'leafgarland/typescript-vim'
-Bundle 'Quramy/tsuquyomi'
-
-" vim-rspec
-map <Leader>r :call RunCurrentSpecFile()<CR>
-map <Leader>e :call RunNearestSpec()<CR>
-map <Leader>w :call RunLastSpec()<CR>
-let g:rspec_runner = "os_x_iterm2"
+"Bundle 'leafgarland/typescript-vim'
+"Bundle 'Quramy/tsuquyomi'
 
 call vundle#end()
 
@@ -104,10 +96,6 @@ let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
-let g:angular_filename_convention = 'camelcased'
-let g:CommandTFileScanner='find'
-"let g:CommandTTraverseSCM='pwd' " node_modules is killing me
-
 let g:EasyMotion_startofline=0
 map <C-h> <Plug>(easymotion-b)
 map <C-l> <Plug>(easymotion-w)
@@ -120,11 +108,6 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
-
-let g:tsuquyomi_disable_quickfix=1
-"let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-let g:tsuquyomi_disable_default_mappings = 1
-
 
 set background=dark
 let g:solarized_visibility="high"
@@ -140,8 +123,6 @@ let g:colorizer_auto_filetype = 'css,scss,html'
 
 let g:vim_json_syntax_conceal = 0
 
-au BufRead /tmp/sql* set ft=sql
-
 au BufNewFile,BufRead */_layouts/*.html set ft=liquid
 au BufNewFile,BufRead */_includes/*.html set ft=liquid
 
@@ -152,12 +133,6 @@ vnoremap Y "*y
 
 " Vim dev-icons needs UTF-8
 set encoding=UTF-8
-
-" Performance fix for icons in the nerd tree
-"augroup nerdtreedisablecursorline
-	"autocmd!
-	"autocmd FileType nerdtree setlocal nocursorline
-"augroup end
 
 "Don't unselect text when shifting
 vnoremap < <gv
@@ -170,4 +145,3 @@ noremap Y y$
 nmap <C-p> :copen<CR>
 "nmap <C-[> :cprev<CR>
 nmap <C-]> :cnext<CR>
-
