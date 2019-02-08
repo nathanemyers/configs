@@ -1,9 +1,10 @@
-source ~/.config/git-completion.bash
-source ~/.git-prompt.sh
+source ~/configs/git-completion.bash
+source ~/configs/git-prompt.sh
 
 export TERM=xterm-256color
 export EDITOR=vim
 alias svnlog='svn log -l 5 -v'
+alias ls='ls -G'
 
 alias ..='cd ..'
 alias ...='cd ../..'
