@@ -31,53 +31,48 @@ cnoreabbrev Qa qa
 cnoreabbrev Wqa wqa
 
 " Here come the plugins
+call plug#begin('~/.vim/plugged')
 
-filetype off " required!
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/YouCompleteMe'
+Plug 'jiangmiao/auto-pairs'
+Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'bling/vim-airline'
+Plug 'mxw/vim-jsx'
+Plug 'chrisbra/Colorizer'
+Plug 'gabesoft/vim-ags'
+Plug 'w0rp/ale'
+"Plug 'jparise/vim-graphql'
+"Plug 'kburdett/vim-nuuid'
 
-Bundle 'gmarik/Vundle.vim'
+"Plug 'ryanoasis/vim-devicons'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Valloric/MatchTagAlways'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'junegunn/fzf.vim'
-Bundle 'bling/vim-airline'
-Bundle 'mxw/vim-jsx'
-Bundle 'chrisbra/Colorizer'
-Bundle 'gabesoft/vim-ags'
-Bundle 'mtscout6/syntastic-local-eslint.vim'
-"Bundle 'jparise/vim-graphql'
-"Bundle 'kburdett/vim-nuuid'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'justinj/vim-react-snippets'
+Plug 'joaohkfaria/vim-jest-snippets'
 
-"Bundle 'ryanoasis/vim-devicons'
-"Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'justinj/vim-react-snippets'
-Bundle 'joaohkfaria/vim-jest-snippets'
-
-"Bundle 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 
 " Ruby stuff
-"Bundle 'tpope/vim-endwise'
-"Bundle 'vim-ruby/vim-ruby'
-"Bundle 'tpope/vim-rails'
-"Bundle 'thoughtbot/vim-rspec'
+"Plug 'tpope/vim-endwise'
+"Plug 'vim-ruby/vim-ruby'
+"Plug 'tpope/vim-rails'
+"Plug 'thoughtbot/vim-rspec'
 
 " typescript
-"Bundle 'leafgarland/typescript-vim'
-"Bundle 'Quramy/tsuquyomi'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'Quramy/tsuquyomi'
 
-call vundle#end()
+call plug#end()
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks=['indent']
