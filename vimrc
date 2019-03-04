@@ -42,8 +42,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf'
 Plug 'bling/vim-airline'
 Plug 'mxw/vim-jsx'
 Plug 'chrisbra/Colorizer'
@@ -59,6 +59,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'justinj/vim-react-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'alvan/vim-closetag'
 
 "Plug 'easymotion/vim-easymotion'
 
@@ -73,6 +75,8 @@ Plug 'joaohkfaria/vim-jest-snippets'
 "Plug 'Quramy/tsuquyomi'
 
 call plug#end()
+
+let g:closetag_filenames = "*.html,*.xhtml,*.php,*.jsx"
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks=['indent']
@@ -140,3 +144,7 @@ noremap Y y$
 nmap <C-p> :copen<CR>
 "nmap <C-[> :cprev<CR>
 nmap <C-]> :cnext<CR>
+
+nmap <Leader>t :GFiles<CR>
+nmap <Leader>r :History<CR>
+nmap <Leader>b :Lines<CR>
