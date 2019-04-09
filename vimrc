@@ -49,6 +49,7 @@ Plug 'mxw/vim-jsx'
 Plug 'chrisbra/Colorizer'
 Plug 'gabesoft/vim-ags'
 Plug 'w0rp/ale'
+
 "Plug 'jparise/vim-graphql'
 "Plug 'kburdett/vim-nuuid'
 
@@ -88,12 +89,14 @@ let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_auto_select=1
 let g:neocomplcache_disable_auto_complete=1
 
-let g:syntastic_csslint_options = "--ignore=ids,important,adjoining-classes"
-let g:syntastic_python_flake8_args='--ignore=E401,E501,W391'
-let g:syntastic_javascript_checkers=['eslint']
-"let g:syntastic_javascript_jshint_esversion = 6
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
+"let g:syntastic_csslint_options = "--ignore=ids,important,adjoining-classes"
+"let g:syntastic_python_flake8_args='--ignore=E401,E501,W391'
+"let g:syntastic_javascript_checkers=['eslint']
+""let g:syntastic_javascript_jshint_esversion = 6
+"let g:syntastic_check_on_open=1
+"let g:syntastic_enable_signs=1
+
+let g:airline#extensions#ale#enabled = 1
 
 let g:EasyMotion_startofline=0
 map <C-h> <Plug>(easymotion-b)
@@ -104,6 +107,8 @@ map <C-j> <Plug>(easymotion-w)
 let g:UltiSnipsExpandTrigger='<c-f>'
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsSnippetsDir="~/.vim/myUltiSnips"
+let g:UltiSnipsSnippetDirectories = ['myUltiSnips']
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
@@ -148,3 +153,11 @@ nmap <C-]> :cnext<CR>
 nmap <Leader>t :GFiles<CR>
 nmap <Leader>r :History<CR>
 nmap <Leader>b :Lines<CR>
+
+" slide code
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv
+vnoremap <C-k> :m '<-2<CR>gv
